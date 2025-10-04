@@ -1,0 +1,35 @@
+model:
+  input_size: 784
+  hidden_sizes: [300, 100]
+  output_size: 10
+  dropout_rate: 0.2
+
+training:
+  learning_rate: 0.001
+  batch_size: 64
+  test_batch_size: 1000
+  epochs: 5
+  optimizer: "adam"
+  scheduler: null
+  weight_decay: 0.0001
+
+pruning:
+  pruning_method: "random_unstructured"
+  pruning_amount: 0.5
+  gradual_pruning: false
+  gradual_steps: 5
+  retrain_after_pruning: true
+  retrain_epochs: 3
+  fine_tune_lr: 0.0001
+
+data:
+  dataset: "mnist"
+  data_dir: "./data"
+  normalize: true
+  augment: false
+  num_workers: 2
+
+device: "auto"
+seed: 42
+save_dir: "./results"
+log_level: "INFO"
